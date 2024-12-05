@@ -3,8 +3,8 @@ from PIL import Image, ImageOps
 from io import BytesIO
 
 # Configuración de la página
-st.title("Aplicación de Marca de Agua - Perfecta")
-st.write("Sube una imagen, ajusta la posición y tamaño de la marca de agua, y descarga el resultado.")
+st.title("Agrega Empresa B a tu Linkedin")
+st.write("Sube una imagen, ajusta la posición y tamaño del logo Empresa B, y descarga el resultado.")
 
 # Subir la imagen principal
 uploaded_file = st.file_uploader("Carga la imagen principal (PNG recomendado)", type=["png", "jpg", "jpeg"])
@@ -25,7 +25,7 @@ if uploaded_file is not None:
     # Continuar si la marca de agua existe
     if watermark:
         # Ajustar tamaño de la marca de agua
-        scale_factor = st.slider("Tamaño de la marca de agua (porcentaje del ancho):", 10, 100, 30)
+        scale_factor = st.slider("Tamaño del logo (porcentaje del ancho):", 10, 100, 30)
         watermark_width = int(main_image.width * (scale_factor / 100))
         watermark_height = int(watermark.size[1] * (watermark_width / watermark.size[0]))
         watermark_resized = watermark.resize((watermark_width, watermark_height))
@@ -41,7 +41,7 @@ if uploaded_file is not None:
         y = int((y_percentage / 100) * (main_image.height - watermark_height))
 
         # Botón para aplicar la marca de agua
-        if st.button("Aplicar marca de agua"):
+        if st.button("Aplicar"):
             # Crear capa para la marca de agua
             overlay = Image.new("RGBA", main_image.size, (0, 0, 0, 0))  # Capa transparente
             overlay.paste(watermark_resized, (x, y), watermark_resized)
@@ -57,8 +57,8 @@ if uploaded_file is not None:
             final_image.save(buffer, format="PNG")
             buffer.seek(0)
             st.download_button(
-                label="Descargar Imagen con Marca de Agua",
+                label="Descargar Imagen final",
                 data=buffer,
-                file_name="imagen_con_marca_agua.png",
+                file_name="imagen_final.png",
                 mime="image/png",
             )
