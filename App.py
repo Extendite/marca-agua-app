@@ -16,10 +16,10 @@ if uploaded_file is not None:
     st.image(main_image, caption="Imagen Principal", use_container_width=True)
 
     # Selección de la marca de agua
-    watermark_option = st.radio("Selecciona el estilo de marca de agua:", ("Negro", "Amarillo"))
+    watermark_option = st.radio("Selecciona el estilo de marca de agua:", ("Opción 1", "Opción 2"))
 
     # Cargar la marca de agua basada en la selección
-    watermark_file = "SistemaBLkdn copia.png" if watermark_option == "Negro" else "SistemaBLkdn copia 2.png"
+    watermark_file = "SistemaBLkdn copia.png" if watermark_option == "Opción 1" else "SistemaBLkdn copia 2.png"
     try:
         watermark = Image.open(watermark_file).convert("RGBA")  # Marca de agua
     except FileNotFoundError:
@@ -80,9 +80,10 @@ if uploaded_file is not None:
                     logo_height = int(logo.size[1] * (logo_width / logo.size[0]))
                     logo_resized = logo.resize((logo_width, logo_height))
 
-                    st.image(logo_resized, use_container_width=False)
+                    st.image(logo_resized, use_column_width=False)
                 except FileNotFoundError:
                     st.error("No se encontró el archivo 'AvatarET.png'. Asegúrate de colocarlo en la misma carpeta que este script.")
+
 
 
 
