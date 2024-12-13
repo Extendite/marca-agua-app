@@ -88,7 +88,7 @@ if uploaded_file is not None:
                         logo_height = int(logo.size[1] * (logo_width / logo.size[0]))
                         logo_resized = logo.resize((logo_width, logo_height))
 
-                        st.image(logo_resized, use_column_width=False)
+                        st.image(logo_resized, use_container_width=False)
                     except FileNotFoundError:
                         st.error("No se encontró el archivo 'AvatarET.png'. Asegúrate de colocarlo en la misma carpeta que este script.")
             except Exception as e:
