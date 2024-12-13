@@ -13,7 +13,7 @@ if uploaded_file is not None:
     main_image = Image.open(uploaded_file).convert("RGBA")
 
     # Mostrar la imagen principal procesada
-    st.image(main_image, caption="Imagen Principal", use_column_width=True)
+    st.image(main_image, caption="Imagen Principal", use_container_width=True)  # Cambio aquí
 
     # Cargar la marca de agua directamente
     try:
@@ -50,7 +50,7 @@ if uploaded_file is not None:
             final_image = Image.alpha_composite(main_image, overlay)
 
             # Mostrar la imagen con la marca de agua
-            st.image(final_image, caption="Imagen con Marca de Agua", use_column_width=True)
+            st.image(final_image, caption="Imagen con Marca de Agua", use_container_width=True)  # Cambio aquí
 
             # Descargar la imagen con la marca de agua
             buffer = BytesIO()
@@ -62,3 +62,4 @@ if uploaded_file is not None:
                 file_name="imagen_final.png",
                 mime="image/png",
             )
+
