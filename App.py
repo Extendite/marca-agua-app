@@ -73,7 +73,7 @@ if uploaded_file is not None:
                 st.write(
                     "*Este es un producto desarrollado por Extend* "
                 )
-                st.image(logo_resized, use_column_width=False)
+                st.image(logo_resized, use_container_width=False)
             except FileNotFoundError:
                 st.error("No se encontró el archivo 'AvatarET.png'. Asegúrate de colocarlo en la misma carpeta que este script.")
 
