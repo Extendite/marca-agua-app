@@ -54,7 +54,10 @@ if uploaded_file is not None:
             buffer = BytesIO()
             final_image.save(buffer, format="PNG")
             buffer.seek(0)
-            col1, col2 = st.columns([3, 1])
+
+            # Diseñar la distribución: botón, mensaje y logo
+            col1, col2, col3 = st.columns([2, 4, 2])
+
             with col1:
                 st.download_button(
                     label="Descargar Imagen final",
@@ -62,11 +65,14 @@ if uploaded_file is not None:
                     file_name="imagen_final.png",
                     mime="image/png",
                 )
+
             with col2:
+                st.write(
+                    "*Este es un producto desarrollado por Extend*"
+                )
+
+            with col3:
                 try:
-                    st.write(
-                        "*Este es un producto desarrollado por Extend* "
-                    )
                     logo = Image.open("AvatarET.png").convert("RGBA")  # Cargar logo de Extend
 
                     # Ajustar tamaño del logo para que coincida con el tamaño del texto
@@ -77,6 +83,7 @@ if uploaded_file is not None:
                     st.image(logo_resized, use_container_width=False)
                 except FileNotFoundError:
                     st.error("No se encontró el archivo 'AvatarET.png'. Asegúrate de colocarlo en la misma carpeta que este script.")
+
 
 
 
