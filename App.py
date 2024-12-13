@@ -30,16 +30,6 @@ if uploaded_file is not None:
         watermark_height = int(watermark.size[1] * (watermark_width / watermark.size[0]))
         watermark_resized = watermark.resize((watermark_width, watermark_height))
 
-        # Ajustar posición en porcentaje
-        st.write("**Posición horizontal (X):** 0% está completamente a la izquierda, 100% está completamente a la derecha.")
-        x_percentage = st.slider("Posición horizontal (X en %):", 0, 100, 50)
-        st.write("**Posición vertical (Y):** 0% está completamente arriba, 100% está completamente abajo.")
-        y_percentage = st.slider("Posición vertical (Y en %):", 0, 100, 50)
-
-        # Convertir porcentajes a coordenadas absolutas
-        x = int((x_percentage / 100) * (main_image.width - watermark_width))
-        y = int((y_percentage / 100) * (main_image.height - watermark_height))
-
         # Botón para aplicar la marca de agua
         if st.button("Aplicar"):
             # Crear capa para la marca de agua
