@@ -15,11 +15,15 @@ if uploaded_file is not None:
     # Mostrar la imagen principal procesada
     st.image(main_image, caption="Imagen Principal", use_container_width=True)
 
-    # Cargar la marca de agua directamente
+    # Selección de la marca de agua
+    watermark_option = st.radio("Selecciona el estilo de marca de agua:", ("Negro", "Amarillo"))
+
+    # Cargar la marca de agua basada en la selección
+    watermark_file = "SistemaBLkdn copia.png" if watermark_option == "Negro" else "SistemaBLkdn copia 2.png"
     try:
-        watermark = Image.open("SistemaBLkdn copia.png").convert("RGBA")  # Marca de agua
+        watermark = Image.open(watermark_file).convert("RGBA")  # Marca de agua
     except FileNotFoundError:
-        st.error("No se encontró el archivo 'SistemaBLkdn copia.png'. Asegúrate de colocarlo en la misma carpeta que este script.")
+        st.error(f"No se encontró el archivo '{watermark_file}'. Asegúrate de colocarlo en la misma carpeta que este script.")
         watermark = None
 
     # Continuar si la marca de agua existe
@@ -56,4 +60,5 @@ if uploaded_file is not None:
                 file_name="imagen_final.png",
                 mime="image/png",
             )
+
 
