@@ -61,12 +61,21 @@ if uploaded_file is not None:
                 mime="image/png",
             )
 
-            # Agregar mensaje de pie de página
-            st.write("Este es un producto desarrollado por Extend")
+            # Agregar mensaje de pie de página con logo
             try:
                 logo = Image.open("AvatarET.png").convert("RGBA")  # Cargar logo de Extend
-                st.image(logo, caption="Extend", use_container_width=True)
+
+                # Ajustar tamaño del logo para que coincida con el tamaño del texto
+                logo_width = 50
+                logo_height = int(logo.size[1] * (logo_width / logo.size[0]))
+                logo_resized = logo.resize((logo_width, logo_height))
+
+                st.write(
+                    "*Este es un producto desarrollado por Extend* "
+                )
+                st.image(logo_resized, use_column_width=False)
             except FileNotFoundError:
                 st.error("No se encontró el archivo 'AvatarET.png'. Asegúrate de colocarlo en la misma carpeta que este script.")
+
 
 
