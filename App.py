@@ -34,8 +34,7 @@ if uploaded_file is not None:
         if st.button("Aplicar"):
             # Crear capa para la marca de agua
             overlay = Image.new("RGBA", main_image.size, (0, 0, 0, 0))  # Capa transparente
-            overlay.paste(watermark_resized, (x, y), watermark_resized)
-
+            
             # Combinar capa de la marca de agua con la imagen principal
             final_image = Image.alpha_composite(main_image, overlay)
 
