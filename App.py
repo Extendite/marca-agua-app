@@ -17,7 +17,7 @@ if uploaded_file is not None:
 
     # Cargar la marca de agua directamente
     try:
-        watermark = Image.open("marca_agua.png")  # Marca de agua subida (no se altera)
+        watermark = Image.open("logonegro.png")  # Marca de agua subida (no se altera)
     except FileNotFoundError:
         st.error("No se encontró el archivo 'marca_agua.png'. Asegúrate de colocarlo en la misma carpeta que este script.")
         watermark = None
