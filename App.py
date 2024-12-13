@@ -16,7 +16,7 @@ if uploaded_file is not None:
     st.image(main_image, caption="Imagen Principal", use_container_width=True)
 
     # Selección de la marca de agua
-    watermark_option = st.radio("Selecciona el estilo de marca de agua:", ("Negro", "Amarillo"))
+    watermark_option = st.radio("Selecciona el estilo de marca de agua:", ("Opción 1", "Opción 2"))
 
     # Cargar la marca de agua basada en la selección
     watermark_file = "SistemaBLkdn copia.png" if watermark_option == "Negro" else "SistemaBLkdn copia 2.png"
