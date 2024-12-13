@@ -4,7 +4,7 @@ from io import BytesIO
 
 # Configuración de la página
 st.title("Agrega Empresa B a tu Linkedin")
-st.write("Sube una imagen, ajusta la posición y tamaño del logo Empresa B, y descarga el resultado.")
+st.write("Sube una imagen, ajusta la posición y tamaño del logo Empresa B, descarga el resultado ¡y comparte el orgullo de ser parte del movimiento que busca un nuevo modelo económico con Triple Impacto!")
 
 # Subir la imagen principal
 uploaded_file = st.file_uploader("Carga la imagen principal (PNG recomendado)", type=["png", "jpg", "jpeg"])
