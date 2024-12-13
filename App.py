@@ -54,28 +54,30 @@ if uploaded_file is not None:
             buffer = BytesIO()
             final_image.save(buffer, format="PNG")
             buffer.seek(0)
-            st.download_button(
-                label="Descargar Imagen final",
-                data=buffer,
-                file_name="imagen_final.png",
-                mime="image/png",
-            )
-
-            # Agregar mensaje de pie de página con logo
-            try:
-                logo = Image.open("AvatarET.png").convert("RGBA")  # Cargar logo de Extend
-
-                # Ajustar tamaño del logo para que coincida con el tamaño del texto
-                logo_width = 50
-                logo_height = int(logo.size[1] * (logo_width / logo.size[0]))
-                logo_resized = logo.resize((logo_width, logo_height))
-
-                st.write(
-                    "*Este es un producto desarrollado por Extend* "
+            col1, col2 = st.columns([3, 1])
+            with col1:
+                st.download_button(
+                    label="Descargar Imagen final",
+                    data=buffer,
+                    file_name="imagen_final.png",
+                    mime="image/png",
                 )
-                st.image(logo_resized, use_container_width=False)
-            except FileNotFoundError:
-                st.error("No se encontró el archivo 'AvatarET.png'. Asegúrate de colocarlo en la misma carpeta que este script.")
+            with col2:
+                try:
+                    st.write(
+                        "*Este es un producto desarrollado por Extend* "
+                    )
+                    logo = Image.open("AvatarET.png").convert("RGBA")  # Cargar logo de Extend
+
+                    # Ajustar tamaño del logo para que coincida con el tamaño del texto
+                    logo_width = 50
+                    logo_height = int(logo.size[1] * (logo_width / logo.size[0]))
+                    logo_resized = logo.resize((logo_width, logo_height))
+
+                    st.image(logo_resized, use_column_width=False)
+                except FileNotFoundError:
+                    st.error("No se encontró el archivo 'AvatarET.png'. Asegúrate de colocarlo en la misma carpeta que este script.")
+
 
 
 
