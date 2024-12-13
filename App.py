@@ -16,10 +16,10 @@ if uploaded_file is not None:
     st.image(main_image, caption="Imagen Principal", use_container_width=True)
 
     # Selección de la marca de agua
-    watermark_option = st.radio("Selecciona el estilo de marca de agua:", ("Opción 1", "Opción 2"))
+    watermark_option = st.radio("Selecciona el estilo de marca de agua:", ("Negro", "Amarillo"))
 
     # Cargar la marca de agua basada en la selección
-    watermark_file = "SistemaBLkdn copia.png" if watermark_option == "Opción 1" else "SistemaBLkdn copia 2.png"
+    watermark_file = "SistemaBLkdn copia.png" if watermark_option == "Negro" else "SistemaBLkdn copia 2.png"
     try:
         watermark = Image.open(watermark_file).convert("RGBA")  # Marca de agua
     except FileNotFoundError:
@@ -60,5 +60,13 @@ if uploaded_file is not None:
                 file_name="imagen_final.png",
                 mime="image/png",
             )
+
+            # Agregar mensaje de pie de página
+            st.write("Este es un producto desarrollado por Extend")
+            try:
+                logo = Image.open("AvatarET.png").convert("RGBA")  # Cargar logo de Extend
+                st.image(logo, caption="Extend", use_container_width=True)
+            except FileNotFoundError:
+                st.error("No se encontró el archivo 'AvatarET.png'. Asegúrate de colocarlo en la misma carpeta que este script.")
 
 
