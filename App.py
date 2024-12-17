@@ -6,6 +6,14 @@ from io import BytesIO
 st.title("Agrega Empresa B a tu LinkedIn")
 st.write("Sube una imagen, ajusta el tamaño del logo de Empresa B, descarga el resultado ¡y comparte el orgullo de ser parte del movimiento que busca un nuevo modelo económico con Triple Impacto!")
 
+# Ocultar solo el footer con CSS
+hide_footer_style = """
+    <style>
+    footer {visibility: hidden;}
+    </style>
+"""
+st.markdown(hide_footer_style, unsafe_allow_html=True)
+
 # Subir la imagen principal
 uploaded_file = st.file_uploader("Carga la imagen principal (PNG recomendado)", type=["png", "jpg", "jpeg"])
 if uploaded_file is not None:
@@ -93,6 +101,7 @@ if uploaded_file is not None:
                         st.error("No se encontró el archivo 'AvatarET.png'. Asegúrate de colocarlo en la misma carpeta que este script.")
             except Exception as e:
                 st.error("Error al aplicar la marca de agua. Inténtalo nuevamente.")
+
 
 
 
