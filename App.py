@@ -31,7 +31,7 @@ if uploaded_file is not None:
     watermark_option = st.radio("Selecciona el estilo de marca de agua:", ("Opción 1", "Opción 2"))
 
     # Cargar la marca de agua basada en la selección
-    watermark_file = "Nuevo_Frame_Amarillo (2).png" if watermark_option == "Opción 1" else "Nuevo_Frame_gris (2).png"
+    watermark_file = "Amarillo final.png" if watermark_option == "Opción 1" else "gris final.png"
     try:
         watermark = Image.open(watermark_file).convert("RGBA")  # Marca de agua
     except FileNotFoundError:
